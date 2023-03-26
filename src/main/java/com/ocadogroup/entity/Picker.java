@@ -33,14 +33,4 @@ public class Picker {
     public void setPickingCurrentTime(String pickingCurrentTime) {
         this.pickingCurrentTime = pickingCurrentTime;
     }
-
-    @Override
-    public String toString() {
-        return "Picker{" +
-                "name='" + name + '\'' +
-                ", pickingStartTime='" + pickingStartTime + '\'' +
-                ", pickingCurrentTime='" + pickingCurrentTime + '\'' +
-                ", pickingEndTime='" + pickingEndTime + '\'' +
-                '}';
-    }
 }

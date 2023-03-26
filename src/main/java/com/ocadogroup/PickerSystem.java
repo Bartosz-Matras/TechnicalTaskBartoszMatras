@@ -1,6 +1,7 @@
 package com.ocadogroup;
 
 import com.ocadogroup.entity.Order;
+import com.ocadogroup.entity.Scheduler;
 import com.ocadogroup.entity.Store;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -9,6 +10,7 @@ import java.util.Collections;
 import java.util.List;
 
 import static com.ocadogroup.GsonDeserialization.*;
+import static com.ocadogroup.PickerThread.getSchedulers;
 
 public class PickerSystem {
 
@@ -27,14 +29,20 @@ public class PickerSystem {
             return;
         }
 
-//        PickerThread pickerThread = new PickerThread(store.getPickers().get(0), store.getPickingStartTime(), store.getPickingEndTime(), orders);
-//        Thread thread = new Thread(pickerThread);
-//        thread.start();
-
         for (String pickerName : store.getPickers()) {
             PickerThread pickerThread = new PickerThread(pickerName, store.getPickingStartTime(), store.getPickingEndTime(), orders);
             Thread thread = new Thread(pickerThread);
             thread.start();
+            try {
+                thread.join();
+            } catch (InterruptedException e) {
+                logger.error("Interrupted exception {0}", e);
+                Thread.currentThread().interrupt();
+            }
+        }
+
+        for (Scheduler scheduler : getSchedulers()) {
+            System.out.println(scheduler);
         }
     }
 

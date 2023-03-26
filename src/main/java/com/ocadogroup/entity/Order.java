@@ -2,10 +2,10 @@ package com.ocadogroup.entity;
 
 public class Order {
 
-    private String orderId;
-    private String orderValue;
-    private String pickingTime;
-    private String completeBy;
+    private final String orderId;
+    private final String orderValue;
+    private final String pickingTime;
+    private final String completeBy;
 
     public Order(String orderId, String orderValue, String pickingTime, String completeBy) {
         this.orderId = orderId;
@@ -28,15 +28,6 @@ public class Order {
 
     public String getCompleteBy() {
         return completeBy;
-    }
-    @Override
-    public String toString() {
-        return "Order{" +
-                "orderId='" + orderId + '\'' +
-                ", orderValue='" + orderValue + '\'' +
-                ", pickingTime='" + pickingTime + '\'' +
-                ", completeBy='" + completeBy + '\'' +
-                '}';
     }
 
 }

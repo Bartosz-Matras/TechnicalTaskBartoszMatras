@@ -4,9 +4,9 @@ import java.util.List;
 
 public class Store {
 
-    private List<String> pickers;
-    private String pickingStartTime;
-    private String pickingEndTime;
+    private final List<String> pickers;
+    private final String pickingStartTime;
+    private final String pickingEndTime;
 
     public Store(List<String> pickers, String pickingStartTime, String pickingEndTime) {
         this.pickers = pickers;
@@ -24,14 +24,5 @@ public class Store {
 
     public String getPickingEndTime() {
         return pickingEndTime;
-    }
-
-    @Override
-    public String toString() {
-        return "Store{" +
-                "pickers=" + pickers +
-                ", pickingStartTime='" + pickingStartTime + '\'' +
-                ", pickingEndTime='" + pickingEndTime + '\'' +
-                '}';
     }
 }

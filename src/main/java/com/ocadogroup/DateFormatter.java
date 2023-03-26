@@ -10,15 +10,8 @@ public class DateFormatter {
 
     private DateFormatter() {}
 
-    public static String initializeDate(String date) {
-        Calendar calendar = getCalendar(date);
-
-        return format.format(calendar.getTime());
-    }
-
     public static String updateDate(String date, long numberOfMinutes) {
         Calendar calendar = getCalendar(date);
-
         calendar.add(Calendar.MINUTE, (int) numberOfMinutes);
         return format.format(calendar.getTime());
     }
@@ -41,9 +34,7 @@ public class DateFormatter {
     public static long numberOfMinutesBetweenTwoDates(String modifiedDate, String dateCompleteBy) {
         Calendar cal1 = getCalendar(modifiedDate);
         Calendar cal2 = getCalendar(dateCompleteBy);
-
-        long diffInMillis = cal2.getTimeInMillis() - cal1.getTimeInMillis();
-        return diffInMillis / (60 * 1000);
+        return (cal2.getTimeInMillis() - cal1.getTimeInMillis()) / (60 * 1000);
     }
 
 }
