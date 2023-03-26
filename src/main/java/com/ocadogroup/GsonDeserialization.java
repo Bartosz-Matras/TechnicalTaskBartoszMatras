@@ -4,8 +4,6 @@ import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 import com.ocadogroup.entity.Order;
 import com.ocadogroup.entity.Store;
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
 
 import java.io.FileNotFoundException;
 
@@ -18,7 +16,6 @@ import java.util.List;
 
 public class GsonDeserialization {
 
-    private static final Logger logger = LogManager.getLogger(GsonDeserialization.class);
 
     private static final Gson gson = new Gson();
 
@@ -31,9 +28,9 @@ public class GsonDeserialization {
             orders = gson.fromJson(reader, new TypeToken<List<Order>>(){}.getType());
             return orders;
         } catch (FileNotFoundException e) {
-            logger.error("File {} not found.", orderFile);
+            System.out.println("File" + orderFile + " not found.");
         } catch (IOException e) {
-            logger.error("Cannot read file {}.", orderFile);
+            System.out.println("Cannot read file " + orderFile);
         }
         return new ArrayList<>();
     }
@@ -45,9 +42,9 @@ public class GsonDeserialization {
             store = gson.fromJson(reader, new TypeToken<Store>(){}.getType());
             return store;
         } catch (FileNotFoundException e) {
-            logger.error("File {} not found.", storeFile);
+            System.out.println("File" + storeFile + " not found.");
         } catch (IOException e) {
-            logger.error("Cannot read file {}.", storeFile);
+            System.out.println("Cannot read file " + storeFile);
         }
         return null;
     }

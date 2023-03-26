@@ -3,8 +3,6 @@ package com.ocadogroup;
 import com.ocadogroup.entity.Order;
 import com.ocadogroup.entity.Scheduler;
 import com.ocadogroup.entity.Store;
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
 
 import java.util.Collections;
 import java.util.List;
@@ -14,7 +12,6 @@ import static com.ocadogroup.PickerThread.getSchedulers;
 
 public class PickerSystem {
 
-    private static final Logger logger = LogManager.getLogger(PickerSystem.class);
 
     private List<Order> orders;
     private Store store;
@@ -25,7 +22,7 @@ public class PickerSystem {
         store = deserializeStore(storeFile);
 
         if (orders.isEmpty() || store == null) {
-            logger.info("Orders are empty or store is null");
+            System.out.println("Orders are empty or store is null");
             return;
         }
 
@@ -36,7 +33,7 @@ public class PickerSystem {
             try {
                 thread.join();
             } catch (InterruptedException e) {
-                logger.error("Interrupted exception {0}", e);
+                e.printStackTrace();
                 Thread.currentThread().interrupt();
             }
         }
