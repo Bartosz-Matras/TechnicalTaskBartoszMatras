@@ -14,7 +14,7 @@ class GsonDeserializationTest {
     @Test
     void deserializeOrdersShouldReturnListOfOrders() {
         //given
-        String orderFile = "C:\\Users\\barto\\Downloads\\self-test-data\\advanced-allocation\\orders.json";
+        String orderFile = "src/test/resources/orders.json";
 
         //when
         List<Order> orders = GsonDeserialization.deserializeOrders(orderFile);
@@ -27,7 +27,7 @@ class GsonDeserializationTest {
     @Test
     void deserializeStoreShouldReturnStoreClass() {
         //given
-        String storeFile = "C:\\Users\\barto\\Downloads\\self-test-data\\advanced-allocation\\store.json";
+        String storeFile = "src/test/resources/store.json";
 
         //when
         Store store = GsonDeserialization.deserializeStore(storeFile);

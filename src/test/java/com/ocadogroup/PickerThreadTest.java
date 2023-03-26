@@ -23,8 +23,8 @@ class PickerThreadTest {
 
     @BeforeEach
     void initializeOrdersAndStore() {
-        String orderFile = "C:\\Users\\barto\\Downloads\\self-test-data\\advanced-allocation\\orders.json";
-        String storeFile = "C:\\Users\\barto\\Downloads\\self-test-data\\advanced-allocation\\store.json";
+        String orderFile = "src/test/resources/orders.json";
+        String storeFile = "src/test/resources/store.json";
         orders = Collections.synchronizedList(deserializeOrders(orderFile));
         store = deserializeStore(storeFile);
     }
